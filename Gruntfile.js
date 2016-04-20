@@ -8,11 +8,20 @@ module.exports = function(grunt) {
         script: './index.js'
       }
     },
-
-    shell: {
-    	host:{
-    		command: '/usr/local/bin/node \n console.log("hello");'
-    	}
+    mochaTest: {
+      options: {
+        reporter: 'spec'
+      },
+      server: {
+        src: [
+          'server/spec/spec.js'
+        ]
+      },
+      client: {
+        src: [
+          'client/spec/spec.js'
+        ]
+      }
     },
 
     watch: {
@@ -42,34 +51,58 @@ module.exports = function(grunt) {
         src: ['./client/index.html'],
         dest: './dist/index.html'
       }
-      /*,
-	    restart: {
-	      src: [
-	        './restart.js'
-	      ],
-	      dest: './restart.js'
-	    },*/
-	    // index: {
-	    //   src: [
-	    //     './app/index.html'
-	    //   ],
-	    //   dest: './dist/index.html'
-	    // }
-	  }
+	  },
+    jshint: {
+      options: {
+        force: 'true',
+        jshintrc: true
+      },
+
+      all: {
+        files: {
+          src: ['./server/**/*.js', './client/**/*.js']
+        }
+      }
+    }
 
 
 
 
 	});
 
+
+  grunt.registerTask('default', [
+    'mochaTest',
+    'jshint',
+    'build',
+    'spawnWatch',
+    'nodemon'
+  ]);
+
+  grunt.registerTask('spawnWatch', function (target) {
+    var watch = grunt.util.spawn({
+      cmd: 'grunt',
+      grunt: true,
+      args: 'watch'
+    });
+    watch.stdout.pipe(process.stdout);
+    watch.stderr.pipe(process.stderr);
+  });
+
+
+
 	grunt.registerTask('build', [
+    'mochaTest:server',
+    'jshint',
     'concat'
 	]);
   grunt.registerTask('build:client', [
-    'concat:clientJS', 'concat:clientHTML' 
+    'mochaTest:client',
+    'concat:clientJS', 
+    'concat:clientHTML' 
   ]);
-/*	grunt.registerTask('build-restart', [
-    'concat:restart'
+	/*grunt.registerTask('shellTask', [
+    'shell'
 	]);*/
 
 
