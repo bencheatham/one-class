@@ -58,9 +58,14 @@ module.exports = function(grunt) {
         jshintrc: true
       },
 
-      all: {
+      server: {
         files: {
-          src: ['./server/**/*.js', './client/**/*.js']
+          src: ['./server/**/*.js']
+        }
+      },
+      client: {
+        files: {
+          src: ['./client/**/*.js']
         }
       }
     }
@@ -93,11 +98,12 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('build', [
     'mochaTest:server',
-    'jshint',
+    'jshint:server',
     'concat'
 	]);
   grunt.registerTask('build:client', [
     'mochaTest:client',
+    'jshint:client',
     'concat:clientJS', 
     'concat:clientHTML' 
   ]);
