@@ -1,37 +1,3 @@
-# InClass Style Guide
-
-The first thing anyone notices about your code is its style, so start prioritizing correct whitespace and other details when using the language. We've collected a list of reasonable choices into a style guide that you should adopt while you're here.
-
-A few of these points are of critical importance to either your code's reliability or its legibility. Those points will be made first, followed by the less critical rules you should set for yourself. The style guidelines you adopt should address the following goals:
-
-* Readability for both junior and senior engineers
-    * Your readers will be both new and experienced engineers, so strive for a balance in readability for both. You can expect your reader to investigate language devices they are not familiar with, but not every minification is an improvement, even if there are some very senior engineers who could figure out what you're trying to express.
-* Maintainability
-    * Sometimes an especially terse or 'elegant' expression can complicate the process of reading, debugging, or refactoring. Remember that your code will be reread many months from now by people who have never seen it or have completely forgotten it.
-* Brevity
-    * This is the least important priority, but it's still of some importance. Try to keep your code as short and clear as possible while adhering to the goals above.
-
-***
-
-# Important style issues
-
-The following are style guidelines that we expect you to follow, and our assessment of your code's quality will depend in part on adhering to them.
-
-
-### Best Practices for your development workflow
-
-We recommend that students learn as much about efficient use of their tools as possible. It is not taught or required in the course, but these techniques are particularly useful to master.
-
-* Learn and use as many keyboard shortcuts as possible. Avoid touching the mouse whenever possible.
-* Practice touch typing as much as possible (don't look at your hands, use all your fingers, and keep them resting on the home row).
-* Operate programs in full screen mode. You can toggle between them more effectively by using `command`+`tab` and `command`+`~` than by using the mouse.
-
-
-### Don't use the dangerous stuff til we get there
-
-* Avoid any use of the keywords "this" or "new" before they are introduced in class. They almost definitely don't work the way you think, and it will be easiest to teach them to you if you haven't acquired a lot of confusing baggage first.
-
-
 ### Indentation
 
 When writing any block of code that is logically subordinate to the line immediately before and after it, that block should be indented two spaces more than the surrounding lines
@@ -42,12 +8,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
         ```javascript
         // good:
-        if (condition) {
+        if(condition){
           action();
         }
 
         // bad:
-        if (condition) {
+        if(condition){
         action();
         }
         ```
@@ -55,12 +21,12 @@ When writing any block of code that is logically subordinate to the line immedia
     * When a line closes a block, that line starts at the same level as the line that opened the block
         ```javascript
         // good:
-        if (condition) {
+        if(condition){
           action();
         }
 
         // bad:
-        if (condition) {
+        if(condition){
           action();
           }
         ```
@@ -122,13 +88,13 @@ When writing any block of code that is logically subordinate to the line immedia
   ```javascript
   // good:
   var list = ['a', 'b', 'c']
-  for (var i = 0; i < list.length; i++) {
+  for(var i = 0; i < list.length; i++){
     alert(list[i]);
   }
 
   // bad:
   var list = ['a', 'b', 'c']
-  for (var i in list) {
+  for(var i in list){
     alert(list[i]);
   }
   ```
@@ -136,12 +102,12 @@ When writing any block of code that is logically subordinate to the line immedia
 * Never omit braces for statement blocks (although they are technically optional).
     ```javascript
     // good:
-    for (key in object) {
+    for(key in object){
       alert(key);
     }
 
     // bad:
-    for (key in object)
+    for(key in object)
       alert(key);
     ```
 
@@ -151,14 +117,14 @@ When writing any block of code that is logically subordinate to the line immedia
     // good:
 
     // this comparison evaluates to false, because the number zero is not the same as the empty string.
-    if (0 === '') {
+    if(0 === ''){
       alert('looks like they\'re equal');
     }
 
     // bad:
 
     // This comparison evaluates to true, because after type coercion, zero and the empty string are equal.
-    if (0 == '') {
+    if(0 == ''){
       alert('looks like they\'re equal');
     }
     ```
@@ -167,10 +133,10 @@ When writing any block of code that is logically subordinate to the line immedia
 
     ```javascript
     // good:
-    var go = function () {...};
+    var go = function(){...};
 
     // bad:
-    function stop () {...};
+    function stop(){...};
     ```
 
 
@@ -191,12 +157,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
   ```javascript
   // good:
-  if (condition) {
+  if(condition){
     response();
   }
 
   // bad:
-  if (condition) {
+  if(condition){
     response();
   };
   ```
@@ -205,12 +171,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
   ```javascript
   // good:
-  var greet = function () {
+  var greet = function(){
     alert('hi');
   };
 
   // bad:
-  var greet = function () {
+  var greet = function(){
     alert('hi');
   }
   ```
@@ -219,7 +185,7 @@ When writing any block of code that is logically subordinate to the line immedia
 
 ### Code density
 
-* Conserve line quantity by minimizing the number of lines you write in. The more concisely your code is written, the more context can be seen in one screen.
+* Conserve line quantity by minimizing the number lines you write in. The more concisely your code is written, the more context can be seen in one screen.
 * Conserve line length by minimizing the amount of complexity you put on each line. Long lines are difficult to read. Rather than a character count limit, I recommend limiting the amount of complexity you put on a single line. Try to make it easily read in one glance. This goal is in conflict with the line quantity goal, so you must do your best to balance them.
 
 ### Comments
@@ -236,10 +202,7 @@ When writing any block of code that is logically subordinate to the line immedia
 * You may use it as padding for visual clarity. If you do though, make sure it's balanced on both sides.
 
     ```javascript
-    // good:
-    alert("I chose to put no visual padding around this string");
-
-    // good:
+    // optional:
     alert( "I chose to put visual padding around this string" );
 
     // bad:
@@ -250,24 +213,24 @@ When writing any block of code that is logically subordinate to the line immedia
 
     ```javascript
     // discouraged:
-    var firstItem  = getFirst();
+    var firstItem  = getFirst ();
     var secondItem = getSecond();
     ```
 
 * Put `else` and `else if` statements on the same line as the ending curly brace for the preceding `if` block
     ```javascript
     // good:
-    if (condition) {
+    if(condition){
       response();
-    } else {
+    }else{
       otherResponse();
     }
 
     // bad:
-    if (condition) {
+    if(condition){
       response();
     }
-    else {
+    else{
       otherResponse();
     }
     ```
@@ -279,7 +242,7 @@ When writing any block of code that is logically subordinate to the line immedia
 * Do not end a file with any character other than a newline.
 * Don't use the -a or -m flags for `git commit` for the first half of the class, since they conceal what is actually happening (and do slightly different things than most people expect).
 
-    ```bash
+    ```shell
     # good:
     > git add .
     > git commit
@@ -300,24 +263,24 @@ When writing any block of code that is logically subordinate to the line immedia
 * The more blocks you open on a single line, the more your reader needs to remember about the context of what they are reading. Try to resolve your blocks early, and refactor. A good rule is to avoid closing more than two blocks on a single line--three in a pinch.
 
     ```javascript
+    // avoid:
+    _.ajax(url, {success: function(){
+      // ...
+    }});
+
     // prefer:
     _.ajax(url, {
-      success: function () {
+      success: function(){
         // ...
       }
     });
-
-    // avoid:
-    _.ajax(url, { success: function () {
-      // ...
-    }});
     ```
 
 
 ### Variable declaration
 
 * Use a new var statement for each line you declare a variable on.
-* Do not break variable declarations onto multiple lines.
+* Do not break variable declarations onto mutiple lines.
 * Use a new line for each variable declaration.
 * See http://benalman.com/news/2012/05/multiple-var-statements-javascript/ for more details
 
@@ -336,7 +299,7 @@ When writing any block of code that is logically subordinate to the line immedia
 
 ### Capital letters in variable names
 
-* Some people choose to use capitalization of the first letter in their variable names to indicate that they contain a [class](http://en.wikipedia.org/wiki/Class_(computer_science)). This capitalized variable might contain a function, a prototype, or some other construct that acts as a representative for the whole class.
+* Some people choose to use capitalization of the first letter in their variable names to indicate that they contain a [class](http://en.wikipedia.org/wiki/Class_(computer_science\)). This capitalized variable might contain a function, a prototype, or some other construct that acts as a representative for the whole class.
 * Optionally, some people use a capital letter only on functions that are written to be run with the keyword `new`.
 * Do not use all-caps for any variables. Some people use this pattern to indicate an intended "constant" variable, but the language does not offer true constants, only mutable variables.
 
@@ -347,12 +310,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
     ```javascript
     // good:
-    var overwriteNumber = function () {
+    var overwriteNumber = function(){
       window.exported = Math.random();
     };
 
     // bad:
-    var overwriteNumber = function () {
+    var overwriteNumber = function(){
       exported = Math.random();
     };
     ```
@@ -375,7 +338,7 @@ When writing any block of code that is logically subordinate to the line immedia
     ];
     ```
 
-* Avoid use of `switch` statements altogether. They are hard to outdent using the standard whitespace rules above, and are prone to error due to missing `break` statements. See [this article](https://ericleads.wordpress.com/2012/12/11/switch-case-considered-harmful/) for more detail.
+* Avoid use of `switch` statements altogether. They are hard to outdent using the standard whitespace rules above, and are prone to error due to missing `break` statements. See [this article](http://ericleads.com/2012/12/switch-case-considered-harmful/) for more detail.
 
 * Prefer single quotes around JavaScript strings, rather than double quotes. Having a standard of any sort is preferable to a mix-and-match approach, and single quotes allow for easy embedding of HTML, which prefers double quotes around tag attributes.
 
