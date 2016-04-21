@@ -1,4 +1,4 @@
-# one-class
+# InClass
 A tool for improving in-class student-teacher interactions
 
 
