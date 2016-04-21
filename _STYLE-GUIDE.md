@@ -1,4 +1,4 @@
-# Style Guide
+# InClass Style Guide
 
 The first thing anyone notices about your code is its style, so start prioritizing correct whitespace and other details when using the language. We've collected a list of reasonable choices into a style guide that you should adopt while you're here.
 
